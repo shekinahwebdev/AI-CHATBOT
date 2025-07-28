@@ -1,3 +1,5 @@
+import submitIcon from "/assets/top.png";
+
 export const ChatFooter = () => {
   return (
     <form className="chatbot_form">
@@ -7,6 +9,9 @@ export const ChatFooter = () => {
         placeholder="Message..."
         required
       />
+      <button className="chatbot_form_button" type="submit">
+        <img src={submitIcon} alt="Submit" className="chatbot_submit_icon" />
+      </button>
     </form>
   );
 };

@@ -4,7 +4,7 @@ export const ChatHeader = () => {
   return (
     <div className="chatbot_header">
       <div className="chatbot_header_line">
-        <div className="chatbot_icon">
+        <div className="chatbot_icon-container">
           <img src={chatbot} alt="Chatbot Icon" className="chatbot_icon" />
         </div>
         <h1 className="chatbot_title">YumGenie Chatbot</h1>
