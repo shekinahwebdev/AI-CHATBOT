@@ -1,5 +1,3 @@
-import React from "react";
-
 export const ChatFooter = () => {
   return (
     <form className="chatbot_form">
