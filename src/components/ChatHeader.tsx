@@ -9,7 +9,6 @@ export const ChatHeader = () => {
         </div>
         <h1 className="chatbot_title">YumGenie Chatbot</h1>
       </div>
-
       <button className="chatbot_button">
         <img src={arrowDown} alt="Arrow Down" className="chatbot_arrow" />
       </button>
