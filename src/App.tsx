@@ -3,8 +3,10 @@ import { ChatHeader } from "./components/ChatHeader";
 import { ChatMessage } from "./components/ChatMessage";
 import chatbot from "/assets/chatbot.png";
 import "./App.css";
+import { useState } from "react";
 
 const App = () => {
+  const [chathistory, setChatHistory] = useState([]);
   return (
     <main className="chatbot_main">
       <ChatHeader />
@@ -20,7 +22,7 @@ const App = () => {
         <ChatMessage />
       </section>
       <footer className="chatbot_footer">
-        <ChatForm />
+        <ChatForm setChatHistory={setChatHistory} />
       </footer>
     </main>
   );

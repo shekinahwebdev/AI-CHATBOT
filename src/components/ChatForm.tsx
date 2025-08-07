@@ -1,14 +1,31 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import submitIcon from "/assets/top.png";
 
-export const ChatForm = () => {
+interface ChatFormProps {
+  setChatHistory: React.Dispatch<React.SetStateAction<any[]>>;
+}
+
+export const ChatForm: React.FC<ChatFormProps> = ({ setChatHistory }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const inputElement = inputRef.current?.value.trim();
+    if (!inputElement) return;
+    inputRef.current!.value = "";
+
+    setChatHistory((history) => [
+      ...history,
+      { role: "user", content: inputElement },
+    ]);
+  };
   const [message, setMessage] = useState("");
   return (
-    <form className="chatbot_form">
+    <form className="chatbot_form" onSubmit={handleSubmit}>
       <input
         type="text"
         className="chatbot_input"
         placeholder="Message..."
+        ref={inputRef}
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         required
