@@ -1,4 +1,4 @@
-import { ChatFooter } from "./components/ChatFooter";
+import { ChatForm } from "./components/ChatForm";
 import { ChatHeader } from "./components/ChatHeader";
 import { ChatMessage } from "./components/ChatMessage";
 import chatbot from "/assets/chatbot.png";
@@ -20,7 +20,7 @@ const App = () => {
         <ChatMessage />
       </section>
       <footer className="chatbot_footer">
-        <ChatFooter />
+        <ChatForm />
       </footer>
     </main>
   );
