@@ -94,13 +94,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--Red) transparent;
 }
 
 .chatbot_body .chatbot_message {
   display: flex;
   align-items: flex-end;
   gap: 0.8rem;
-  /* border: 2px solid green; */
 }
 
 .chatbot_message .chatbot_icon-container {
