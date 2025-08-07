@@ -97,10 +97,10 @@ body {
 }
 
 .chatbot_body .chatbot_message {
-  /* border: 2px solid red; */
   display: flex;
   align-items: flex-end;
   gap: 0.8rem;
+  /* border: 2px solid green; */
 }
 
 .chatbot_message .chatbot_icon-container {
@@ -108,12 +108,13 @@ body {
 }
 
 .chatbot_body .message_text {
-  max-width: 70%;
+  max-width: 60%;
   white-space: pre-line;
   word-wrap: break-word;
   padding: 1rem 1.2rem;
   background-color: var(--Red-message);
   border-radius: 15px 5px 10px 5px;
+  /* border: 2px solid blue; */
 }
 
 .chatbot_body .user_message {
@@ -124,10 +125,10 @@ body {
 
 .chatbot_body .user_message .message_text {
   border-radius: 10px 15px 5px 10px;
+  /* border: 2px solid black; */
 }
 
 .chatbot_footer {
-  /* border: 2px solid red; */
   width: 100%;
   padding: 1.2rem 1.3rem 2rem;
 }

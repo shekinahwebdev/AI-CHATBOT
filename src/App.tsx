@@ -6,7 +6,8 @@ import "./App.css";
 import { useState } from "react";
 
 const App = () => {
-  const [chathistory, setChatHistory] = useState([]);
+  const [chathistory, setChatHistory] = useState<ChatMessage[]>([]);
+
   return (
     <main className="chatbot_main">
       <ChatHeader />
@@ -19,7 +20,9 @@ const App = () => {
             Hello there 👋 <br />I am YumGenie, your AI-powered chatbot!
           </p>
         </div>
-        <ChatMessage />
+        {chathistory.map((message, index) => (
+          <ChatMessage message={message} key={index} />
+        ))}
       </section>
       <footer className="chatbot_footer">
         <ChatForm setChatHistory={setChatHistory} />

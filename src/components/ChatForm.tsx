@@ -17,6 +17,13 @@ export const ChatForm: React.FC<ChatFormProps> = ({ setChatHistory }) => {
       ...history,
       { role: "user", content: inputElement },
     ]);
+
+    setTimeout(() => {
+      setChatHistory((history) => [
+        ...history,
+        { role: "bot", content: "Thinking..." },
+      ]);
+    }, 600);
   };
   const [message, setMessage] = useState("");
   return (
