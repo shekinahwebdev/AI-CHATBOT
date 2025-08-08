@@ -7,15 +7,20 @@ import { useEffect, useRef, useState } from "react";
 
 const App = () => {
   const [chathistory, setChatHistory] = useState<ChatMessage[]>([]);
+  const [showChat, setShowChat] = useState<boolean>(true);
   const chatRef = useRef<HTMLDivElement>(null);
 
+  const handleShowChat = () => {
+    setShowChat((prev) => !prev);
+  };
+
   const generateBotResponse = async (history: any[]) => {
-    const upadateChatHistory = (botReply: string) => {
+    const upadateChatHistory = (botReply: string, isError: boolean = false) => {
       setChatHistory((prevHistory) => [
         ...prevHistory.filter(
           (msg) => !(msg.role === "bot" && msg.content === "Thinking...")
         ),
-        { role: "bot", content: botReply },
+        { role: "bot", content: botReply, isError },
       ]);
     };
 
@@ -49,8 +54,8 @@ const App = () => {
         .trim();
 
       upadateChatHistory(botReply);
-    } catch (error) {
-      console.log(error);
+    } catch (error: string | any) {
+      console.log(error.message, true);
     }
   };
 
@@ -63,8 +68,8 @@ const App = () => {
   });
 
   return (
-    <main className="main">
-      <button className="chatbot_toggle-button">
+    <main className={`main ${showChat ? "show-chatbot" : ""}`}>
+      <button className="chatbot_toggle-button" onClick={handleShowChat}>
         <img
           src="/assets/close.png"
           alt="Close Chatbot"
@@ -77,7 +82,7 @@ const App = () => {
         />
       </button>
       <div className="chatbot_main">
-        <ChatHeader />
+        <ChatHeader handleShowChat={handleShowChat} />
         <section className="chatbot_body" ref={chatRef}>
           <div className="chatbot_message">
             <div className="chatbot_icon-container">

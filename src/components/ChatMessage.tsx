@@ -3,6 +3,7 @@ import chatbot from "/assets/chatbot.png";
 type ChatMessage = {
   role: "user" | "bot";
   content: string;
+  isError?: boolean;
 };
 
 interface ChatMessageProps {
@@ -12,7 +13,7 @@ interface ChatMessageProps {
 export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
   if (message.role === "bot") {
     return (
-      <div className="chatbot_message">
+      <div className={`chatbot_message ${message.isError ? "error" : ""}`}>
         <div className="chatbot_icon-container">
           <img src={chatbot} alt="Chatbot Icon" className="chatbot_icon" />
         </div>

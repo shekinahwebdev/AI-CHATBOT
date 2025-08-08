@@ -1,6 +1,11 @@
 import chatbot from "/assets/chatbot-3.png";
 import arrowDown from "/assets/caret-down.png";
-export const ChatHeader = () => {
+
+interface ChatHeaderProps {
+  handleShowChat?: () => void;
+}
+
+export const ChatHeader: React.FC<ChatHeaderProps> = ({ handleShowChat }) => {
   return (
     <div className="chatbot_header">
       <div className="chatbot_header_line">
@@ -9,7 +14,7 @@ export const ChatHeader = () => {
         </div>
         <h1 className="chatbot_title">YumGenie Chatbot</h1>
       </div>
-      <button className="chatbot_button">
+      <button className="chatbot_button" onClick={handleShowChat}>
         <img src={arrowDown} alt="Arrow Down" className="chatbot_arrow" />
       </button>
     </div>
