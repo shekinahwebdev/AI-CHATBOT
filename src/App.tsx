@@ -63,28 +63,42 @@ const App = () => {
   });
 
   return (
-    <main className="chatbot_main">
-      <ChatHeader />
-      <section className="chatbot_body" ref={chatRef}>
-        <div className="chatbot_message">
-          <div className="chatbot_icon-container">
-            <img src={chatbot} alt="Chatbot Icon" className="chatbot_icon" />
-          </div>
-          <p className="message_text">
-            Hello there 👋 <br />I am YumGenie, your AI-powered chatbot!
-          </p>
-        </div>
-        {chathistory.map((message, index) => (
-          <ChatMessage message={message} key={index} />
-        ))}
-      </section>
-      <footer className="chatbot_footer">
-        <ChatForm
-          setChatHistory={setChatHistory}
-          generateBotResponse={generateBotResponse}
-          chathistory={chathistory}
+    <main className="main">
+      <button className="chatbot_toggle-button">
+        <img
+          src="/assets/close.png"
+          alt="Close Chatbot"
+          className="chatbot_close_icon"
         />
-      </footer>
+        <img
+          src="/assets/messenger.png"
+          alt="Open Chatbot"
+          className="chatbot_open_icon"
+        />
+      </button>
+      <div className="chatbot_main">
+        <ChatHeader />
+        <section className="chatbot_body" ref={chatRef}>
+          <div className="chatbot_message">
+            <div className="chatbot_icon-container">
+              <img src={chatbot} alt="Chatbot Icon" className="chatbot_icon" />
+            </div>
+            <p className="message_text">
+              Hello there 👋 <br />I am YumGenie, your AI-powered chatbot!
+            </p>
+          </div>
+          {chathistory.map((message, index) => (
+            <ChatMessage message={message} key={index} />
+          ))}
+        </section>
+        <footer className="chatbot_footer">
+          <ChatForm
+            setChatHistory={setChatHistory}
+            generateBotResponse={generateBotResponse}
+            chathistory={chathistory}
+          />
+        </footer>
+      </div>
     </main>
   );
 };
