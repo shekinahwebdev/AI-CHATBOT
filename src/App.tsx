@@ -4,9 +4,16 @@ import { ChatMessage } from "./components/ChatMessage";
 import chatbot from "/assets/chatbot.png";
 import "./App.css";
 import { useEffect, useRef, useState } from "react";
+import { companyInfo } from "./companyInfo";
 
 const App = () => {
-  const [chathistory, setChatHistory] = useState<ChatMessage[]>([]);
+  const [chathistory, setChatHistory] = useState<ChatMessage[]>([
+    {
+      hideInfoChat: true,
+      role: "bot",
+      content: companyInfo,
+    },
+  ]);
   const [showChat, setShowChat] = useState<boolean>(true);
   const chatRef = useRef<HTMLDivElement>(null);
 

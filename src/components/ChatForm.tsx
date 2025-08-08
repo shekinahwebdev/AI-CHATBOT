@@ -13,6 +13,7 @@ export const ChatForm: React.FC<ChatFormProps> = ({
   chathistory,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const inputElement = inputRef.current?.value.trim();
@@ -32,8 +33,15 @@ export const ChatForm: React.FC<ChatFormProps> = ({
 
       generateBotResponse([
         ...chathistory,
-        { role: "user", content: inputElement },
+        {
+          role: "user",
+          content: `using the details provided above, please address this query: ${inputElement}`,
+        },
       ]);
+      // generateBotResponse([
+      //   ...chathistory,
+      //   { role: "user", content: inputElement },
+      // ]);
     }, 600);
   };
   const [message, setMessage] = useState("");

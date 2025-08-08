@@ -4,6 +4,7 @@ type ChatMessage = {
   role: "user" | "bot";
   content: string;
   isError?: boolean;
+  hideInfoChat?: boolean;
 };
 
 interface ChatMessageProps {
@@ -13,17 +14,21 @@ interface ChatMessageProps {
 export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
   if (message.role === "bot") {
     return (
-      <div className={`chatbot_message ${message.isError ? "error" : ""}`}>
-        <div className="chatbot_icon-container">
-          <img src={chatbot} alt="Chatbot Icon" className="chatbot_icon" />
+      !message.hideInfoChat && (
+        <div className={`chatbot_message ${message.isError ? "error" : ""}`}>
+          <div className="chatbot_icon-container">
+            <img src={chatbot} alt="Chatbot Icon" className="chatbot_icon" />
+          </div>
+          <p className="message_text">{message.content}</p>
         </div>
-        <p className="message_text">{message.content}</p>
-      </div>
+      )
     );
   }
   return (
-    <div className="user_message">
-      <p className="message_text">{message.content}</p>
-    </div>
+    !message.hideInfoChat && (
+      <div className="user_message">
+        <p className="message_text">{message.content}</p>
+      </div>
+    )
   );
 };
