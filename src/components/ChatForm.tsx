@@ -16,6 +16,7 @@ export const ChatForm: React.FC<ChatFormProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setMessage("");
     const inputElement = inputRef.current?.value.trim();
     if (!inputElement) return;
     inputRef.current!.value = "";
