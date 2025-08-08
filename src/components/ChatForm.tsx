@@ -3,9 +3,15 @@ import submitIcon from "/assets/top.png";
 
 interface ChatFormProps {
   setChatHistory: React.Dispatch<React.SetStateAction<any[]>>;
+  generateBotResponse: (history: any[]) => void;
+  chathistory: any[];
 }
 
-export const ChatForm: React.FC<ChatFormProps> = ({ setChatHistory }) => {
+export const ChatForm: React.FC<ChatFormProps> = ({
+  setChatHistory,
+  generateBotResponse,
+  chathistory,
+}) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,6 +28,11 @@ export const ChatForm: React.FC<ChatFormProps> = ({ setChatHistory }) => {
       setChatHistory((history) => [
         ...history,
         { role: "bot", content: "Thinking..." },
+      ]);
+
+      generateBotResponse([
+        ...chathistory,
+        { role: "user", content: inputElement },
       ]);
     }, 600);
   };
