@@ -4,7 +4,14 @@ import { ChatMessage } from "./components/ChatMessage";
 import chatbot from "/assets/chatbot.png";
 import "./App.css";
 import { useEffect, useRef, useState } from "react";
-import { companyInfo } from "./companyInfo";
+import { companyInfo } from "../src/companyInfo";
+
+interface ChatMessage {
+  hideInfoChat: boolean;
+  role: "user" | "bot";
+  content: string;
+  isError?: boolean;
+}
 
 const App = () => {
   const [chathistory, setChatHistory] = useState<ChatMessage[]>([
@@ -27,7 +34,7 @@ const App = () => {
         ...prevHistory.filter(
           (msg) => !(msg.role === "bot" && msg.content === "Thinking...")
         ),
-        { role: "bot", content: botReply, isError },
+        { role: "bot", content: botReply, isError, hideInfoChat: false },
       ]);
     };
 
