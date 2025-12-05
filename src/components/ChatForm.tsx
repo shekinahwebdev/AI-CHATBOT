@@ -25,6 +25,7 @@ export const ChatForm: React.FC<ChatFormProps> = ({
       ...history,
       { role: "user", content: inputElement },
     ]);
+    console.log(history);
 
     setTimeout(() => {
       setChatHistory((history) => [
